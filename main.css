@@ -1,17 +1,328 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(218, 218, 218);
+    min-height: 100vh;
+    padding: 30px 20px 80px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: rgb(0, 0, 0);
+}
+
+.products {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 780px;
+    margin: 0 auto;
+}
+
+@media (max-width: 500px) {
+    .products {
+        grid-template-columns: 1fr;
+    }
+}
+
+.product-list,
+.left-to-buy {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.add-item {
+    display: flex;
+    gap: 0;
+    margin-bottom: 0;
+    padding-bottom: 4px;
+}
+
+.add-item input {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+}
+
+.add-item input:focus {
+    border-color: #7b2fbe;
+}
+
+.add-item button {
+    background: #2980b9;
+    color: #fff;
+    border: none;
+    border-radius: 0 6px 6px 0;;
+	border-bottom: #21618c solid 3px;
+    padding: 8px 18px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.3s ease;
+}
+
+.add-item button:hover {
+    background: #1a6a9a;
+}
+
+.product-list-items {
+    list-style: none;
+    margin-top: 0;
+}
+
+.product-list-items li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 0;
+    border-bottom: 1px solid #919191;
+}
+
+.product-list-items li:last-child {
+    border-bottom: none;
+}
+
+.product-name {
+    flex: 1;
+    font-size: 18px;
+    color: #333;
+}
+
+.btn-sub,
+.btn-add {
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    flex: 0 0 auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.btn-sub {
+    background: #e74c3c;
+    color: #fff;
+    border-bottom: #c0392b solid 3px;
+}
+
+.btn-sub:hover {
+    background: #c0392b;
+}
+
+.btn-add {
+    background: #2ecc71;
+    border-bottom: #27ae60 solid 3px;
+    color: #fff;
+}
+
+.btn-add:hover {
+    background: #27ae60;
+}
+
+.product-quantity {
+    min-width: 22px;
+    text-align: center;
+    font-size: 16px;
+    border: #cacaca solid 1px;
+    background-color: #cacaca;
+    color: #363636;
+    border-radius: 4px;
+    padding: 4px 10px;
+}
+
+.btn-bought {
+    background: #eee;
+    border: 1px solid #ccc;
+    border-bottom: #a5a5a5 solid 3px;
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative;
+}
+
+.btn-remove {
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    border-bottom: #c0392b solid 3px;
+    padding: 4px 8px;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.3s ease;
+}
+
+.btn-remove:hover {
+    background: #c0392b;
+}
+
+.left-to-buy article + article {
+    margin-top: 16px;
+}
+
+.left-to-buy h2 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #333;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #919191;
+}
+
+.cart-items,
+.bought-items {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    min-height: 28px;
+}
+
 .product-item {
-	background-color: gray;
-	display: inline-block;
-	height: 25px;
-	padding: 5px;
-	border-radius: 5px;
+    background-color: #ddd;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    height: 25px;
+    padding: 0 8px 0 6px;
+    border-radius: 5px;
+    font-size: 13px;
+}
+
+.product-item.bought {
+    opacity: 0.7;
 }
 
 .amount {
-	background-color: yellow;
-	border-radius: 10px;
-	
-	display: inline-block;
-	height: 20px;
-	width: 20px;
-	text-align: center;
+    background-color: #da5b00;
+    color: #fff;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 18px;
+    width: 18px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+[data-tooltip] {
+    position: relative;
+}
+
+[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%) scale(0.7);
+    transform-origin: bottom center;
+    background: #7b2fbe;
+    color: #fff;
+    white-space: nowrap;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 100;
+}
+
+[data-tooltip]:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+}
+
+.badge {
+    position: fixed;
+    bottom: 0;
+    left: 24px;
+    width: 160px;
+    border-radius: 12px 12px 0 0;
+    background: #2d1b4e;
+    color: #fff;
+    overflow: hidden;
+    z-index: 200;
+    cursor: default;
+    transform: translateY(calc(100% - 42px));
+    transition: transform 0.35s ease, background 0.35s ease;
+}
+
+.badge:hover {
+    transform: translateY(0);
+    background: #5b21b6;
+	border: #2d1b4e solid 2px;
+}
+
+.badge-label {
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}
+
+.badge-author {
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: center;
+    padding: 0 8px;
+}
+
+.badge-author strong {
+    font-size: 14px;
+}
+
+@media print {
+    .badge {
+        position: static;
+        width: 200px;
+        transform: none !important;
+        background: #fff !important;
+        color: #000;
+        border: 2px solid #7b2fbe;
+        border-radius: 12px 12px 0 0;
+    }
+
+    .badge-label {
+        display: none;
+    }
+
+    .badge-author {
+        height: auto;
+        padding: 12px;
+    }
+
+    h1, main, .add-item {
+        display: none;
+    }
 }

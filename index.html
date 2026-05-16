@@ -1,16 +1,71 @@
 <!DOCTYPE html>
-<html>
-<head lang="uk">
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <title>My Page</title>
-
-
+    <title>Mokliak Viacheslav</title>
     <link rel="stylesheet" type="text/css" href="main.css" />
 </head>
 <body>
-	<span class="product-item">
-		Apple
-		<span class="amount">4</span>
-	</span>
+    <h1>Mokliak Viacheslav</h1>
+
+    <main class="products">
+        <section class="product-list">
+            <form class="add-item">
+                <input type="text" id="search" placeholder="Item name">
+                <button id="search-btn" data-tooltip="Add item">Add</button>
+            </form>
+
+            <ul class="product-list-items">
+                <li>
+                    <span class="product-name">Tomatoes</span>
+                    <button class="btn-sub" data-tooltip="Decrease quantity">−</button>
+                    <span class="product-quantity">2</span>
+                    <button class="btn-add" data-tooltip="Increase quantity">+</button>
+                    <button class="btn-bought" data-tooltip="Mark as bought">Bought</button>
+                    <button class="btn-remove" data-tooltip="Remove item">×</button>
+                </li>
+                <li>
+                    <span class="product-name">Cookies</span>
+                    <button class="btn-sub" data-tooltip="Decrease quantity">−</button>
+                    <span class="product-quantity">2</span>
+                    <button class="btn-add" data-tooltip="Increase quantity">+</button>
+                    <button class="btn-bought" data-tooltip="Mark as bought">Bought</button>
+                    <button class="btn-remove" data-tooltip="Remove item">×</button>
+                </li>
+                <li>
+                    <span class="product-name">Cheese</span>
+                    <button class="btn-sub" data-tooltip="Decrease quantity">−</button>
+                    <span class="product-quantity">1</span>
+                    <button class="btn-add" data-tooltip="Increase quantity">+</button>
+                    <button class="btn-bought" data-tooltip="Mark as bought">Bought</button>
+                    <button class="btn-remove" data-tooltip="Remove item">×</button>
+                </li>
+            </ul>
+        </section>
+
+        <section class="left-to-buy">
+            <article>
+                <h2>Left to Buy</h2>
+                <ul class="cart-items">
+                    <li class="product-item">Cookies <span class="amount">2</span></li>
+                    <li class="product-item">Cheese <span class="amount">1</span></li>
+                </ul>
+            </article>
+            <article>
+                <h2>Bought</h2>
+                <ul class="bought-items">
+                    <li class="product-item bought"><s>Tomatoes</s> <span class="amount">2</span></li>
+                </ul>
+            </article>
+        </section>
+    </main>
+
+    <aside class="badge">
+        <p class="badge-label">Buy List</p>
+        <p class="badge-author">Created by:
+            <br>
+            <strong>Viacheslav Mokliak</strong>
+        </p>
+    </aside>
 </body>
 </html>
